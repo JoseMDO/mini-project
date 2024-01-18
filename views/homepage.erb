@@ -1,20 +1,27 @@
-<h1>Welcome to SuperHero Clash!</h1>
+<div class="main-container">
+  <div class="title-container">
+    <h1 class="title">Welcome to SuperHero Clash!</h1>
+    <p class="description">In this game you will pick two heros or villians and they will fight to see who is stronger!</p>
+  </div>
 
-<% params %>
+  <div class="form-container">
+    <form class="form" action="/results" method="post">
+      <div class="form-input">
+        <label for="first">Choose your first fighter</label>
+        <input id="first" type="text" name="first_fighter" placeholder="Type their name here">
+      </div>
 
+      <div class="form-input">
+        <label for="second">Choose your second figther</label>
+        <input id="second" type="text" name="second_fighter" placeholder="Type their name here">
+      </div>
 
-<p>In this game you will pick two heros or villians and they will fight to see who is stronger!</p>
+      <button class="fight-button">Fight!</button>
+    </form>
+  </div>
 
+</div>
 
-
-<form action="/results" method="post">
-
-  <label for="first">Choose your first fighter</label>
-  <input id="first" type="text" name="first_fighter">
-
-  <label for="second">Choose your second figther</label>
-  <input id="second" type="text" name="second_fighter">
-
-  <button>Fight!</button>
-
-</form>
+<div class="heroes-list">
+  <a href="https://superheroapi.com/ids.html">Here is a list of all the characters available to fight!</a>
+</div>

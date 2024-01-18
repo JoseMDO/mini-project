@@ -1,6 +1,70 @@
 
+<div class="results-container">
+  <div class="fighters">
+    <h1 class="name"> <%= @first_name %> </h1>
+    <img class="image" src="<%= @first_image %>" alt="first_fighter">
+    <dl>
+      <dt>Intelligence</dt>
+      <dd> <%= @first_intelligence %></dd>
 
+      <dt>Strength</dt>
+      <dd> <%= @first_strength %></dd>
 
+      <dt>Speed</dt>
+      <dd><%= @first_speed %> </dd>
 
+      <dt>Durability</dt>
+      <dd> <%= @first_durability %> </dd>
 
-<%= @result %>
+      <dt>Power</dt>
+      <dd> <%= @first_power %> </dd>
+
+      <dt>Combat</dt>
+      <dd> <%= @first_combat %> </dd>
+
+    </dl>
+
+  </div>
+
+  <div>
+    <h1>VS</h1>
+  </div>
+
+  
+  <div class="fighters">
+    <h1 class="name"> <%= @second_name %> </h1>
+    <img class="image" src="<%= @second_image %>" alt="second_fighter">
+    <dl>
+      <dt>Intelligence</dt>
+      <dd> <%= @second_intelligence %></dd>
+
+      <dt>Strength</dt>
+      <dd> <%= @second_strength %></dd>
+
+      <dt>Speed</dt>
+      <dd><%= @second_speed %> </dd>
+
+      <dt>Durability</dt>
+      <dd> <%= @second_durability %> </dd>
+
+      <dt>Power</dt>
+      <dd> <%= @second_power %> </dd>
+
+      <dt>Combat</dt>
+      <dd> <%= @second_combat %> </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="winner-container">
+  <h1>Winner</h1>
+
+  <div class="fighters">
+    <h1 class="name"> <%= @result %> </h1>
+    <img class="image" src="<%= @winner_image %>" alt="winning fighter">
+    <h2 class="total-points">Total Power Points: <%= @winner_total %></h2>
+  </div>
+
+  <a class="back-button" href="/">New Fight</a>
+
+</div>
