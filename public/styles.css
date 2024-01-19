@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: #4C94F6;
   font-family: 'Bangers', system-ui;
@@ -5,6 +9,11 @@ body {
   margin: 0;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h1 {
@@ -48,6 +57,7 @@ h1 {
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
+  box-shadow: 5px 5px 5px 5px #00000072;
 }
 
 
@@ -89,6 +99,7 @@ input:focus {
   cursor: pointer;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
+  box-shadow: 5px 5px 5px 5px #00000072;
 }
 
 .fight-button:hover {
@@ -182,6 +193,7 @@ dl {
   border: 5px solid black;
   border-radius: 10px;
   margin-top: 20px;
+  box-shadow: 5px 5px 5px 5px #00000072;
 }
 
 .back-button:hover {
