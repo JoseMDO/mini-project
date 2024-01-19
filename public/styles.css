@@ -53,11 +53,23 @@ h1 {
   justify-content: center;
   flex-direction: column;
   background-color: #F6DB35;
-  border: 5px solid #EE5454;
+  border: 7px solid #EE5454;
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   box-shadow: 5px 5px 5px 5px #00000072;
+  position: relative;
+}
+.gif-container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  position: absolute;
+  bottom: -50px;
+}
+.gif {
+  height: 200px;
 }
 
 
@@ -80,12 +92,12 @@ input {
 }
 
 input:hover {
-  scale: 107%;
+  scale: 110%;
   transition-duration: 300ms;
 }
 
 input:focus {
-  scale: 107%;
+  scale: 110%;
   transition-duration: 300ms;
 }
 
