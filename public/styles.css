@@ -7,6 +7,9 @@ body {
   -webkit-text-stroke-color: white;
 }
 
+h1 {
+  font-size: 5rem;
+}
 
 .main-container {
   display: flex;
@@ -24,8 +27,9 @@ body {
 }
 
 .hero-link {
+  color: #EE5454;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: black;
   text-decoration: none;
 }
 .hero-link:hover {

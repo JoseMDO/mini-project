@@ -11,8 +11,8 @@ end
 
 
 post("/results") do 
-  first = params.fetch("first_fighter")
-  second = params.fetch("second_fighter")
+  first = params.fetch("first_fighter").strip()
+  second = params.fetch("second_fighter").strip()
   superhero_access_token = ENV.fetch("SUPERHERO_ACCESS_TOKEN")
 
   ## THIS SEARCHES FOR THE SUPERHERE IN THE API. IF IT DOES NOT EXIST IT WIL MAKE THE USER TYPE THEM IN AGAIN
