@@ -1,18 +1,9 @@
-# sinatra-template
+# Superhero Clash
 
-Use this repository to create new Sinatra apps. 
+This application simulates two heores / villians fighting eachother and seeing who comes out stronger. 
 
-Optionally, to use `ActiveRecord` for database operations, add to the `app.rb`:
 
-```ruby
-require "sinatra/activerecord"
-```
+It gets all the data from the Superhero API - https://superheroapi.com/index.html
 
-And in the `config/environment.rb` file add this code block:
 
-```ruby
-configure do
-  # setup a database connection
-  set(:database, { adapter: "sqlite3", database: "db/development.sqlite3" })
-end
-```
+It asks the user to type two heroes names and then it takes them to a page where it shows all the stats for the fighters and who comes out on top. 
