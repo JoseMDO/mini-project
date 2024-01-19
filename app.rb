@@ -96,6 +96,8 @@ post("/results") do
     @winner_total = @second_total
   elsif @first_total == @second_total
     @result = 'tie'
+    @winner_image = "tie"
+    @winner_total = @first_total
   end
 
 

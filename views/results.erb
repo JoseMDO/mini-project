@@ -61,7 +61,11 @@
 
   <div class="fighters">
     <h1 class="name"> <%= @result %> </h1>
-    <img class="image" src="<%= @winner_image %>" alt="winning fighter">
+    <% if @winner_image === "tie" %>
+      <img class="image" src="https://www.shutterstock.com/image-vector/business-handshake-partnership-teamwork-600nw-525498040.jpg" alt="handshake">
+    <% else %>
+      <img class="image" src="<%= @winner_image %>" alt="winning fighter">
+    <% end %>
     <h2 class="total-points">Total Power Points: <%= @winner_total %></h2>
   </div>
 
