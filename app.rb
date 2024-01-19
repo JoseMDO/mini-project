@@ -15,7 +15,7 @@ post("/results") do
   second = params.fetch("second_fighter").strip()
   superhero_access_token = ENV.fetch("SUPERHERO_ACCESS_TOKEN")
 
-  ## THIS SEARCHES FOR THE SUPERHERE IN THE API. IF IT DOES NOT EXIST IT WIL MAKE THE USER TYPE THEM IN AGAIN
+  ## THIS SEARCHES FOR THE SUPERHERO IN THE API. IF IT DOES NOT EXIST IT WIL MAKE THE USER TYPE THEM IN AGAIN
   first_resp = HTTP.get('https://www.superheroapi.com/api.php/'+ superhero_access_token + '/search/'+first)
   first_raw_response = first_resp.to_s
   first_parsed_response = JSON.parse(first_raw_response)
@@ -23,7 +23,7 @@ post("/results") do
     redirect to ('/')
   end
 
-
+  #SAME BUT FOR THE SECOND HERO
   second_resp = HTTP.get('https://superheroapi.com/api.php/'+ superhero_access_token + '/search/'+second)
   second_raw_response = second_resp.to_s
   second_parsed_response = JSON.parse(second_raw_response)
@@ -31,6 +31,8 @@ post("/results") do
     redirect to ('/')
   end
 
+
+  #THIS IS A HELPER FUNCTION THAT HELPS FIND THE INDEX OF THE HERO BASED OFF THE NAME THE USER TYPED 
   def index_finder(results, name)
     found = false
     results.each do |result|
@@ -44,17 +46,21 @@ post("/results") do
     end
   end
 
+  #THESE TWO GET THE HERO ID'S USING THAT FUNCTION I CREATED. IT GETS THE PARSED RESPONSE AND LOOKS FOR A HERO WITH THE MATCHING NAME 
   first_id = index_finder(first_parsed_response.fetch("results"), first)
   second_id = index_finder(second_parsed_response.fetch("results"), second)
 
+  #THESE GET THE NAME ON FILE FOR EACH HERO FROM THE ID SO IT CAN BE DISPLAYED TO THE USER
   first_name_response = HTTP.get('https://superheroapi.com/api.php/'+ superhero_access_token + '/'+ first_id)
   first_name_parsed = JSON.parse(first_name_response.to_s)
   @first_name = first_name_parsed.fetch("name")
-
   second_name_response = HTTP.get('https://superheroapi.com/api.php/'+ superhero_access_token + '/'+ second_id)
   second_name_parsed = JSON.parse(second_name_response.to_s)
   @second_name = second_name_parsed.fetch("name")
 
+
+
+  #THESE GET THE POWERSTATS FOR EACH HER0 
   first_powerstats_resp = HTTP.get('https://superheroapi.com/api.php/'+ superhero_access_token + '/'+ first_id + '/powerstats')
   first_parsed_powerstats = JSON.parse(first_powerstats_resp.to_s)
   @first_intelligence = first_parsed_powerstats.fetch("intelligence").to_i
@@ -63,22 +69,22 @@ post("/results") do
   @first_durability = first_parsed_powerstats.fetch("durability").to_i
   @first_power = first_parsed_powerstats.fetch("power").to_i
   @first_combat = first_parsed_powerstats.fetch("combat").to_i
-
   @first_total = @first_intelligence + @first_strength + @first_speed + @first_durability + @first_power + @first_combat
 
+  #SAME AS ABOVE
   second_powerstats_resp = HTTP.get('https://superheroapi.com/api.php/'+ superhero_access_token + '/'+ second_id + '/powerstats')
   second_parsed_powerstats = JSON.parse(second_powerstats_resp.to_s)
-
   @second_intelligence = second_parsed_powerstats.fetch("intelligence").to_i
   @second_strength = second_parsed_powerstats.fetch("strength").to_i
   @second_speed = second_parsed_powerstats.fetch("speed").to_i
   @second_durability = second_parsed_powerstats.fetch("durability").to_i
   @second_power = second_parsed_powerstats.fetch("power").to_i
   @second_combat = second_parsed_powerstats.fetch("combat").to_i
-
   @second_total = @second_intelligence + @second_strength + @second_speed + @second_durability + @second_power + @second_combat
 
 
+  
+  #THIS GETS THE IMAGE FOR EACH HERO TO BE DISPLAYED 
   first_image_resp = HTTP.get('https://superheroapi.com/api.php/'+ superhero_access_token + '/'+ first_id + '/image')
   first_image_parsed = JSON.parse(first_image_resp.to_s)
   @first_image = first_image_parsed.fetch("url")
@@ -86,6 +92,9 @@ post("/results") do
   second_image_parsed = JSON.parse(second_image_resp.to_s)
   @second_image = second_image_parsed.fetch("url")
 
+
+
+  #THIS CALCULATES THE WINNER BY CHEKCING WHO HAS MORE POWERPOINTS 
   if @first_total > @second_total 
     @result = @first_name
     @winner_image = @first_image
